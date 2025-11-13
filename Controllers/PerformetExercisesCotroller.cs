@@ -142,6 +142,31 @@ namespace BeFit.Controllers
             return View(ex);
         }
 
+        [Authorize]
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var userId = User.GetUserId();
+
+            var performedExercise = await _context.PerformedExercises
+                .Include(p => p.TrainingSession)
+                .Include(p => p.ExerciseType)
+                .FirstOrDefaultAsync(p => p.Id == id && p.UserId == userId);
+
+            if (performedExercise == null)
+            {
+                // jeśli chcesz, możesz tu dać np. RedirectToAction("Index")
+                return NotFound();
+            }
+
+            return View(performedExercise);
+        }
+
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

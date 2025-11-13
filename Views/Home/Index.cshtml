@@ -1,53 +1,102 @@
 ﻿@{
-    ViewData["Title"] = "BeFit – strona główna";
+    ViewData["Title"] = "BeFit – panel startowy";
 }
 
-<div class="text-center">
-    <h1 class="display-4">BeFit</h1>
-    <p>Prosta aplikacja do śledzenia Twoich treningów.</p>
+<div class="text-center mb-4">
+    <h1 class="display-5">BeFit</h1>
+    <p class="lead">
+        Prosta aplikacja do rejestrowania sesji treningowych, wykonanych ćwiczeń i przeglądania statystyk.
+    </p>
 </div>
 
 <hr />
 
-<div class="row">
-    <div class="col-md-4">
-        <div class="card mb-3">
-            <div class="card-body">
+<div class="row mb-4">
+    <div class="col-md-3 mb-3">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
                 <h5 class="card-title">Typy ćwiczeń</h5>
-                <p class="card-text">
-                    Zobacz listę dostępnych ćwiczeń. Administrator może tu dodawać i edytować typy ćwiczeń.
+                <p class="card-text flex-grow-1">
+                    Lista dostępnych ćwiczeń (np. przysiad, wyciskanie, martwy ciąg). Administrator może dodawać i edytować typy.
                 </p>
-                <a asp-controller="ExerciseTypes" asp-action="Index" class="btn btn-primary">
-                    Przejdź do ćwiczeń
+                <a asp-controller="ExerciseTypes" asp-action="Index" class="btn btn-primary mt-auto">
+                    Przejdź do typów
                 </a>
             </div>
         </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="card mb-3">
-            <div class="card-body">
+    <div class="col-md-3 mb-3">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
                 <h5 class="card-title">Sesje treningowe</h5>
-                <p class="card-text">
-                    Przeglądaj swoje sesje, dodawaj nowe i planuj kolejne treningi.
+                <p class="card-text flex-grow-1">
+                    Twórz swoje sesje treningowe z datą rozpoczęcia i zakończenia. Na ich podstawie przypisujesz wykonane ćwiczenia.
                 </p>
-                <a asp-controller="TrainingSessions" asp-action="Index" class="btn btn-outline-secondary">
+                <a asp-controller="TrainingSessions" asp-action="Index" class="btn btn-primary mt-auto">
                     Moje sesje
                 </a>
             </div>
         </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">Statystyki</h5>
-                <p class="card-text">
-                    Zobacz, jak trenujesz w ostatnich czterech tygodniach – ilość powtórzeń i obciążenia.
+    <div class="col-md-3 mb-3">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Wykonane ćwiczenia</h5>
+                <p class="card-text flex-grow-1">
+                    Dodawaj sery, powtórzenia i obciążenia dla ćwiczeń wykonanych w ramach sesji. Te dane trafiają do statystyk.
                 </p>
-                <a asp-controller="Stats" asp-action="Index" class="btn btn-outline-secondary">
+                <a asp-controller="PerformedExercises" asp-action="Index" class="btn btn-primary mt-auto">
+                    Pokaż wykonane ćwiczenia
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card h-100">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">Statystyki</h5>
+                <p class="card-text flex-grow-1">
+                    Podsumowanie ostatnich 4 tygodni: liczba wykonań ćwiczeń, suma powtórzeń, średnie i maksymalne obciążenia.
+                </p>
+                <a asp-controller="Stats" asp-action="Index" class="btn btn-primary mt-auto">
                     Zobacz statystyki
                 </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Jak korzystać?</h5>
+                <ol class="mb-0">
+                    <li>Jeśli jesteś administratorem – zdefiniuj <strong>Typy ćwiczeń</strong>.</li>
+                    <li>Jako zalogowany użytkownik – utwórz <strong>Sesję treningową</strong>.</li>
+                    <li>Dodaj <strong>Wykonane ćwiczenia</strong> przypisane do sesji i typu ćwiczenia.</li>
+                    <li>Wejdź w <strong>Statystyki</strong>, aby zobaczyć podsumowanie ostatnich 4 tygodni.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">Logowanie i role</h5>
+                <p class="mb-2">
+                    Rejestracja i logowanie oparte są na ASP.NET Core Identity.
+                </p>
+                <ul class="mb-0">
+                    <li>Zwykły użytkownik widzi i edytuje tylko <strong>swoje</strong> sesje i wykonane ćwiczenia.</li>
+                    <li>Administrator może zarządzać <strong>typami ćwiczeń</strong>.</li>
+                </ul>
             </div>
         </div>
     </div>
