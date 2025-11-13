@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "BeFit – strona główna";
+}
+
+<div class="text-center">
+    <h1 class="display-4">BeFit</h1>
+    <p>Prosta aplikacja do śledzenia Twoich treningów.</p>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Typy ćwiczeń</h5>
+                <p class="card-text">
+                    Zobacz listę dostępnych ćwiczeń. Administrator może tu dodawać i edytować typy ćwiczeń.
+                </p>
+                <a asp-controller="ExerciseTypes" asp-action="Index" class="btn btn-primary">
+                    Przejdź do ćwiczeń
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Sesje treningowe</h5>
+                <p class="card-text">
+                    Przeglądaj swoje sesje, dodawaj nowe i planuj kolejne treningi.
+                </p>
+                <a asp-controller="TrainingSessions" asp-action="Index" class="btn btn-outline-secondary">
+                    Moje sesje
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Statystyki</h5>
+                <p class="card-text">
+                    Zobacz, jak trenujesz w ostatnich czterech tygodniach – ilość powtórzeń i obciążenia.
+                </p>
+                <a asp-controller="Stats" asp-action="Index" class="btn btn-outline-secondary">
+                    Zobacz statystyki
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

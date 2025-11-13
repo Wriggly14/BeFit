@@ -1,0 +1,33 @@
+@model BeFit.Models.BeFit.ExerciseType
+
+@{
+    ViewData["Title"] = "Szczegóły typu ćwiczenia";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Name)</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+
+        <dt class="col-sm-3">@Html.DisplayNameFor(m => m.Description)</dt>
+        <dd class="col-sm-9">@Model.Description</dd>
+
+        <dt class="col-sm-3">Zakres obciążenia [kg]</dt>
+        <dd class="col-sm-9">
+            @Model.MinLoad?.ToString("0.##") - @Model.MaxLoad?.ToString("0.##")
+        </dd>
+
+        <dt class="col-sm-3">Zakres powtórzeń</dt>
+        <dd class="col-sm-9">@Model.MinReps - @Model.MaxReps</dd>
+    </dl>
+</div>
+
+<div>
+    @if (User.IsInRole("Administrator"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edytuj</a>
+    }
+    <a asp-action="Index" class="btn btn-secondary">Powrót</a>
+</div>

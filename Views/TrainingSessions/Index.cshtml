@@ -1,0 +1,37 @@
+@model IEnumerable<BeFit.Models.BeFit.TrainingSession>
+
+@{
+    ViewData["Title"] = "Sesje treningowe";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Dodaj sesję treningową</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Start)</th>
+            <th>@Html.DisplayNameFor(m => m.End)</th>
+            <th>@Html.DisplayNameFor(m => m.Notes)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Start.ToString("g")</td>
+            <td>@item.End.ToString("g")</td>
+            <td>@item.Notes</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
