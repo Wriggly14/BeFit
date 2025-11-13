@@ -4,6 +4,7 @@ obj/
 *.user
 *.swp
 *.suo
+*.db
 *.dbmdl
 *.jfm
 node_modules/
